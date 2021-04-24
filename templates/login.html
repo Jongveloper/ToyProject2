@@ -22,19 +22,19 @@
             crossorigin="anonymous"></script>
 
     <title>로그인 페이지</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
 <section class="login-form">
     <h1>Login</h1>
-    <form action="">
+    <form method="POST">
         <div class="int-area"> <!-- 아이디입력-->
-            <input type="text" name="id" id="id"
+            <input type="text" name="username" id="id"
                    autocomplete="off" required>
             <label for="id">USER ID</label>
         </div>
         <div class="int-area"><!-- 비밀번호입력-->
-            <input type="password" name="pw" id="pw"
+            <input type="password" name="password" id="pw"
                    autocomplete="off" required>
             <label for="id">PASSWORD</label>
         </div>
