@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+body {
+    font-family: 'Jua', sans-serif;
+    /*display: flex;*/
+    justify-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url("https://cdn.pixabay.com/photo/2018/12/24/22/19/camping-3893587_1280.jpg") no-repeat center;
+    background-size: cover;
+} /* 바디전체 */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(20, 30, 50, .1);
+}  /*백그라운드 어둡게*/
+
+.intro{position: relative;}
+
+.navi{
+    width: 1450px;
+    margin-bottom: 48rem;
+    margin-left: 68rem;
+
+} /* navbar 위치조정 */
+
+.information{
+    width: 400px;
+    height: 400px;
+    background: transparent;
+    margin-left: 8rem;
+    margin-top: 2rem;
+} /*캠핑지*/
+
+.camping{
+    font-size: 20px;
+    position: relative;
+    z-index: 9999999; /*하이퍼링크가 눌리지않아서 설정*/
+
+
+}
