@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+body {
+    font-family: 'Jua', sans-serif;
+    height: content-box;
+    background: url("https://cdn.pixabay.com/photo/2016/02/09/16/35/night-1189929_1280.jpg") no-repeat center;
+    background-size: cover;
+}
+.wrap{
+    width: 900px;
+    margin: auto;
+} /*전체 적인 너비 */
+
+#post-box{
+    width: 500px;
+    margin: 20px auto;
+    padding: 50px;
+    border: black solid;
+    border-radius: 5px;
+} /* 포스팅박스 */
+
+.comment{
+    color: blue;
+    font-weight: bold;
+}

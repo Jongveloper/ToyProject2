@@ -24,8 +24,7 @@ body::before {
 
 .navi{
     width: 1450px;
-    margin-bottom: 48rem;
-    margin-left: 68rem;
+    margin-left: 28rem;
 
 } /* navbar 위치조정 */
 
@@ -38,7 +37,12 @@ body::before {
 } /*캠핑지*/
 
 .camping{
+    width: 440px;
+    /*height: 40px;*/
+    margin-left: 20.45rem;
+
     font-size: 20px;
+
     position: relative;
     z-index: 9999999; /*하이퍼링크가 눌리지않아서 설정*/
 
