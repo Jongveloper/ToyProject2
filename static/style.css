@@ -57,7 +57,7 @@ body::before{
 .int-area input:valid + label{
     top: -2px;
     font-size: 13px; color: #16ea5d;
-}
+} /*입력창에 입력하려고 할 시 폰트 위로 올라가고 작아짐 색은 초록색 */
 
 .btn-area {margin-top: 30px;}
 .btn-area button {

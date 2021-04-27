@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session ,jsonify
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 
 class User:
    def __init__(self, id, username, password):
@@ -21,6 +21,8 @@ import requests
 from bs4 import BeautifulSoup
 
 from pymongo import MongoClient
+client = MongoClient('localhost', 27017)
+db = client.dbsparta
 client = MongoClient('localhost', 27017)
 db = client.dbsparta
 
@@ -86,6 +88,33 @@ def saving():
    db.articles.insert_one(doc)
 
    return jsonify({'msg': '좋은 영화 공유해주셔서 감사합니다!'})
+
+@app.route('/event')
+def event():
+   return render_template('event.html')
+
+# 주문하기(POST) API
+@app.route('/comm', methods=['POST'])
+def save_order():
+    name_receive = request.form['name_give']
+    address_receive = request.form['address_give']
+    phone_receive = request.form['phone_give']
+
+
+    doc = {
+        'name': name_receive,
+        'address': address_receive,
+        'phone': phone_receive
+    }
+    db.comm.insert_one(doc)
+
+    return jsonify({'msg': '응모완료!'})
+
+# 주문 목록보기(Read) API
+@app.route('/comm', methods=['GET'])
+def view_orders():
+    event = list(db.comm.find({}, {'_id': False}))
+    return jsonify({'comm': event})
 
 if __name__ == '__main__':
    app.run('0.0.0.0',port=5000,debug=True)

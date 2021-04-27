@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <title>이벤트 페이지</title>
+    <link rel="stylesheet" href="../static/event.css">
+
+    <script>
+        $(document).ready(function (){
+            listing();
+        });
+
+        function listing() {
+            $.ajax({
+                type: "GET",
+                url: "/comm",
+                data: {},
+                success: function (response) {
+                        let event = response['comm'];
+                        for (let i = 0; i <event.length; i++){
+                            let name = event[i]['name'];
+                            let address = event[i]['address'];
+                            let phone = event[i]['phone'];
+
+
+                            let temp_html = `<tr>
+                                                <td style="color: white;">${name}</td>
+                                                <td style="color: white;">${address}</td>
+                                                <td style="color: white;">${phone}</td>
+                                            </tr>`
+                            $('#event-box').append(temp_html)
+                        }
+                    }
+            })
+        }
+
+        function event_comm() {
+            let name = $('#event-name').val();
+            let address = $('#event-address').val();
+            let phone = $('#event-phone').val();
+
+            $.ajax({
+                type: "POST",
+                url: "/comm",
+                data: {name_give: name, address_give: address, phone_give: phone},
+                success: function (response) {
+                        alert(response["msg"]);
+                        window.location.reload();
+                    }
+
+            })
+
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <h1 style="color: white;">이달의 이벤트 : 감성LED스트랩</h1>
+        <div class=img></div>
+        <h3 style="color: white;">이벤트 응모방법</h3>
+        <p style="color: white;">밑에 이벤트 응모하시는 분의 성함 주소 전화번호를 남겨주세요!</p>
+        <h3 style="color: white;">필수작성란</h3>
+        <div class="input-group mb-3">
+            <span class="input-group-text">성함</span>
+            <input id="event-name" type="text" class="form-control" placeholder="이 곳에 입력해주세요." aria-label="Username"
+                   aria-describedby="basic-addon1">
+        </div> <!-- 성함-->
+        <div class="input-group mb-3">
+            <span class="input-group-text" >주소</span>
+            <input type="text" id="event-address" class="form-control" placeholder="이 곳에 입력해주세요." aria-label="Username"
+                   aria-describedby="basic-addon1">
+
+        </div> <!-- 주소-->
+        <div class="input-group mb-3">
+            <span class="input-group-text" >전화번호</span>
+            <input type="text" id="event-phone" class="form-control" placeholder="이 곳에 입력해주세요." aria-label="Username"
+                   aria-describedby="basic-addon1">
+        </div> <!-- 전화번호-->
+        <button type="button" onclick="event_comm();" class="btn btn-warning">응모하기</button>
+
+        <table class="table" style="margin-top: 20px;">
+        <thead>
+        <tr>
+            <th scope="col" style="color: white;">이름</th>
+            <th scope="col" style="color: white;">주소</th>
+            <th scope="col" style="color: white;">전화번호</th>
+        </tr>
+        </thead>
+        <tbody id="event-box">
+        <tr>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>
