@@ -28,7 +28,7 @@ db = client.dbsparta
 
 app.secret_key = 'qlasldldldldldlf'
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
    if request.method == 'POST':
       session.pop('user_id', None)
@@ -45,7 +45,7 @@ def login():
 
    return render_template('login.html')
 
-@app.route('/')
+@app.route('/main')
 def main():
    return render_template('index.html')
 
